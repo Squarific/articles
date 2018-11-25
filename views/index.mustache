@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Raleway:700');
+        body {
+            background-color: #1e201e;
+            padding: 1%;
+        }
+        .title {
+            font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+            color: #58a56e;
+            font-size: 7.5vmax
+        }
+        .element {
+            background-color: #283864;
+            margin: 5vh;
+            padding-top: 3.5vw;
+            padding-bottom: 3.5vw;
+            color: white;
+            font-family: 'Raleway', sans-serif;
+        }
+        .element:hover {
+            background-color:#445f81;
+        }
+        .b {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+    </style>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <title>Articles</title>
+</head>
+<body>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <div id="app" align="center" v-bind:class="{ app: css }">
+            <span v-bind:class="{ title: css }" v-html="message"></span>
+                <input placeholder="Search"  type="name" onkeypress="do_it(this.value)">
+                <li v-bind:class="{ element: css }" v-bind:id="name" onclick="ask(this.id)" v-for="(title, name) in titles">
+                    <h1 v-html="title"></h1>
+                    <h5 v-if="artists[name] != undefined">created by <a v-html="artists[name]" v-bind:class="{ b: css }"></a></h5>
+                </li>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Articles',
+                    titles: ("{{titles}}".split(",")),
+                    artists: ("{{artists}}".split(",")),
+                    css: true
+                }
+            })
+            function ask(id) {
+                document.location.replace("/article?id=" + id)
+            }
+            function do_it(text) {
+                var titles = ("{{titles}}".split(","));
+                for (var i = 0; i < titles.length; i++) {document.getElementById(i).hidden = false;}
+                for (var i = 0; i < titles.length; i++) {if(titles[i].includes(text) == false){document.getElementById(i).hidden = true;}} 
+            }
+        </script>
+</body>
+</html>
