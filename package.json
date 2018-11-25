@@ -1,0 +1,25 @@
+{
+  "name": "articles",
+  "version": "1.0.0",
+  "description": "articles pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "test_atricle"
+  },
+  "keywords": [
+    "free",
+    "upload",
+    "database"
+  ],
+  "author": "woutfeys, Tasow Inc.",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-vue": "^5.8.2",
+    "mustache-express": "^1.2.8",
+    "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "pug": "^2.0.3"
+  }
+}
