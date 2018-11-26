@@ -12,7 +12,11 @@
         .title {
             font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
             color: #58a56e;
-            font-size: 7.5vmax
+            font-size: 7.5vmax;
+            transition:all 0.3s ease;
+        }
+        .title:hover {
+            color: #91ffb0;
         }
         .element {
             background-color: #283864;
@@ -21,6 +25,7 @@
             padding-bottom: 3.5vw;
             color: white;
             font-family: 'Raleway', sans-serif;
+            transition:all 0.3s ease;
         }
         .element:hover {
             background-color:#445f81;
@@ -31,8 +36,16 @@
         }
         .input {
             display: block;
+            transition:all 0.75s ease;
         }
-
+        .input:focus {
+            outline: none;
+            border-radius: 1vh;;
+            border: none;
+        }
+        .input:hover {
+            color: green;
+        }
     </style>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
   <title>Articles</title>
@@ -41,11 +54,11 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <div id="app" align="center" v-bind:class="{ app: css }">
             <span v-bind:class="{ title: css }" v-html="message"></span>
-                <input v-bind:class="{ input: css }" placeholder="Search"  type="name" onkeypress="do_it(this.value)">
-                <li v-bind:class="{ element: css }" v-bind:id="name" onclick="ask(this.id)" v-for="(title, name) in titles">
+                <input v-model="Search" v-bind:class="{ input: css }" placeholder="Search"  type="name">
+                <div v-bind:class="{ element: css }" v-bind:id="name" onclick="ask(this.id)" v-for="(title, name) in titles">
                     <h1 v-html="title"></h1>
                     <h5 v-if="artists[name] != undefined">created by <a v-html="artists[name]" v-bind:class="{ b: css }"></a></h5>
-                </li>
+                </div>
 
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -56,16 +69,19 @@
                     message: 'Articles',
                     titles: ("{{titles}}".split(",")),
                     artists: ("{{artists}}".split(",")),
-                    css: true
+                    css: true,
+                    Search: ""
+                },
+                watch: {
+                    Search: function (text) {
+                        var titles = ("{{titles}}".split(","));
+                        for (var i = 0; i < titles.length; i++) {document.getElementById(i).hidden = false;}
+                        for (var i = 0; i < titles.length; i++) {if(titles[i].includes(text) == false){document.getElementById(i).hidden = true;}} 
+                    } 
                 }
             })
             function ask(id) {
                 document.location.replace("/article?id=" + id)
-            }
-            function do_it(text) {
-                var titles = ("{{titles}}".split(","));
-                for (var i = 0; i < titles.length; i++) {document.getElementById(i).hidden = false;}
-                for (var i = 0; i < titles.length; i++) {if(titles[i].includes(text) == false){document.getElementById(i).hidden = true;}} 
             }
         </script>
 </body>
