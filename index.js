@@ -16,11 +16,12 @@ app.get("/", function(req, res){
 })
 app.get("/article", function(req, res){
     const id = parseInt(req.query.id)
-    const json = require("./database/articles.json")
-    var text = json.text[id]
+    var json = require("./database/articles.json")
     var creator = json.artists[id]
     var title = json.names[id]
+    json = require("./database/text.json")
+    var text = json.text[id]
     res.render("article.mustache", {text: text, artist: creator, title: title})
 })
 app.get("/")
-app.listen(process.env.PORT || 800)
+app.listen(800)
