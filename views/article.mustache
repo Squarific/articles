@@ -14,7 +14,11 @@
         .title {
             font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
             color: #58a56e;
-            font-size: 7.5vmax
+            font-size: 7.5vmax;
+            transition:all 0.3s ease;
+        }
+        .title:hover {
+            color: #91ffb0;
         }
         .element {
             background-color: #283864;
@@ -23,6 +27,7 @@
             padding-bottom: 3.5vw;
             color: white;
             font-family: 'Raleway', sans-serif;
+            transition:all 0.3s ease;
         }
         .element:hover {
             background-color:#445f81;
@@ -49,11 +54,11 @@
         <button class="back" onclick="location.replace('/')">&lt</button>
         <div id="app" align="center" v-bind:class="{ app: css }">
             <span v-bind:class="{ title: css }" v-html="message"></span>
-                <li v-bind:class="{ element: css }">
+                <div v-bind:class="{ element: css }">
                     <h1>{{title}}</h1>
                     <h3 v-bind:class="{ text: css }">{{text}}</h3>
                     <h5>created by <a v-bind:class="{ b: css }">{{artist}}</a></h5>
-                </li>
+                </div>
 
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
