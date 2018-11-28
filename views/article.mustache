@@ -3,19 +3,30 @@
 <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="application/ld+json">
-            {
-              "@context": "http://schema.org/",
-              "@type": "Article",
-              "name": "{{title}}",
-              "author": {
-                "@type": "Person",
-                "name": "{{artist}}"
-              },
-              "articleBody" : "{{text}}",
-              "description": "{{title}} - {{artist}}"
-            }
-            </script>
+            <script type="application/ld+json">
+                {
+                  "@context": "http://schema.org",
+                  "@type": "NewsArticle",
+                  "articleBody" : "{{text}}",
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://articles-tasow.herokuapp.com/"
+                  },
+                  "author": {
+                    "@type": "Person",
+                    "name": "{{artist}}"
+                  },
+                   "publisher": {
+                    "@type": "Organization",
+                    "name": "Tasow",
+                    "logo": {
+                      "@type": "ImageObject",
+                      "url": "https://articles-tasow.herokuapp.com/favicon.png"
+                    }
+                  },
+                  "description": "{{tittle}}"
+                }
+                </script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Raleway:700');

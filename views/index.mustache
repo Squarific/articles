@@ -78,7 +78,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <div id="app" align="center" v-bind:class="{ app: css }">
             <span v-bind:class="{ title: css }" v-html="message"></span>
-                <input v-model="Search" v-bind:class="{ input: css }" placeholder="Search"  type="name">
+                    <input v-model="Search" v-bind:class="{ input: css }" placeholder="Search"  type="name">
+                    <a href="/artists" >Articles for Writers</a>
                 <div v-bind:class="{ element: css }" v-bind:id="name" onclick="ask(this.id)" v-for="(title, name) in titles">
                     <h1 v-html="title"></h1>
                     <h5 v-if="artists[name] != undefined">created by <a v-html="artists[name]" v-bind:class="{ b: css }"></a></h5>
