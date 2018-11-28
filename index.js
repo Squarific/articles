@@ -23,4 +23,7 @@ app.get("/article", function(req, res){
     var text = json.text[id]
     res.render("article.mustache", {text: text, artist: creator, title: title})
 })
+app.get("/artists", function(req, res){
+    res.render("artists.mustache", {})
+})
 app.listen(process.env.PORT)
