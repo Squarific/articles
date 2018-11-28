@@ -3,32 +3,27 @@
 <head>
         <meta charset="UTF-8"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="application/ld+json">
-            {
-              "@context": "http://schema.org/",
-              "@type": "Article",
-              "name": "{{title}}",
-              "author": {
-                "@type": "Person",
-                "name": "{{artist}}"
-              },
-              "articleBody" : "{{text}}",
-              "description": "{{title}} - {{artist}}"
-            }
-            </script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Raleway:700');
         @import url('https://fonts.googleapis.com/css?family=Farsan');
         body {
             background-color: #1e201e;
-            padding: 1%;
         }
         .title {
             font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
             color: #58a56e;
             font-size: 7.5vmax;
             transition:all 0.3s ease;
+            display: block;
+            padding: 0.5em;
+        }
+        .login {
+            font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+            background-color: #58a56e;
+            transition:all 0.3s ease;
+            padding: 3.75vh;
+            width: 100%;
         }
         .title:hover {
             color: #91ffb0;
@@ -36,14 +31,9 @@
         .element {
             background-color: #283864;
             margin: 5vh;
-            padding-top: 3.5vw;
-            padding-bottom: 3.5vw;
+            padding-top: 5vw;
+            padding-bottom: 5vw;
             color: white;
-            font-family: 'Raleway', sans-serif;
-            transition:all 0.3s ease;
-        }
-        .element:hover {
-            background-color:#445f81;
         }
         .text {
             font-family: 'Farsan', cursive;
@@ -58,21 +48,43 @@
             color: #f7f7f7;
             border : none;
         }
+        .forminput {
+            margin: 0.5em;
+            border-radius: 2.5px;
+            border: none;
+            padding: 0.5em;
+            background-color: #f7f7f7;
+            color: rgb(20, 18, 18);
+        }
+        .buttonclass {
+            margin-top: 5vh;
+        }
+        .button {
+            background-color: #1e201e;
+            color: white;
+        }
     </style>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <link rel="favicon" type="image/png" href="favicon.png"/>
-  <title>Articles - {{title}}</title>
+  <title>Articles - For creators</title>
 </head>
 <body>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <button class="back" onclick="location.replace('/')">&lt</button>
         <div id="app" align="center" v-bind:class="{ app: css }">
             <span v-bind:class="{ title: css }" v-html="message"></span>
-                <div v-bind:class="{ element: css }">
-                    <h1>{{title}}</h1>
-                    <h3 v-bind:class="{ text: css }">{{text}}</h3>
-                    <h5>created by <a v-bind:class="{ b: css }">{{artist}}</a></h5>
-                </div>
+            <form align="center" v-bind:class="{ login: css }" v-on:submit.prevent="onSubmit">
+                <h1 style="margin-bottom: 5vh;"> Login </h1>
+                    <input type="name" placeholder="Username" v-bind:class="{ forminput: css }">
+                    <br>
+                    <input type="password" placeholder="Password" v-bind:class="{ forminput: css }">
+                    <br>
+                    <div class="btn-group buttonclass" role="group">
+                    <button type="button" class="btn button">Login</button>
+                    <button type="button" disabled class="btn button"> or </button>
+                    <button type="button" class="btn button">Sign up</button>
+                    </div>
+            </form>
 
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
