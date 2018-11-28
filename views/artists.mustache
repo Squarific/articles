@@ -49,7 +49,9 @@
             border : none;
         }
         .forminput {
-            margin: 0.5em;
+            margin: 0.1em;
+            width: 25em;
+            max-width: 100%;
             border-radius: 2.5px;
             border: none;
             padding: 0.5em;
@@ -62,7 +64,13 @@
         .button {
             background-color: #1e201e;
             color: white;
+            min-width:8em;
         }
+        
+        .or {
+            min-width: initial;
+        }
+        
     </style>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <link rel="favicon" type="image/png" href="favicon.png"/>
@@ -74,14 +82,14 @@
         <div id="app" align="center" v-bind:class="{ app: css }">
             <span v-bind:class="{ title: css }" v-html="message"></span>
             <form align="center" v-bind:class="{ login: css }" v-on:submit.prevent="onSubmit">
-                <h1 style="margin-bottom: 5vh;"> Login </h1>
+                <h1 style="margin: 1em;"> Login </h1>
                     <input type="name" placeholder="Username" v-bind:class="{ forminput: css }">
                     <br>
                     <input type="password" placeholder="Password" v-bind:class="{ forminput: css }">
                     <br>
                     <div class="btn-group buttonclass" role="group">
                     <button type="button" class="btn button">Login</button>
-                    <button type="button" disabled class="btn button"> or </button>
+                    <button type="button" disabled class="btn button or"> or </button>
                     <button type="button" class="btn button">Sign up</button>
                     </div>
             </form>
