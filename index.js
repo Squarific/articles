@@ -26,4 +26,4 @@ app.get("/article", function(req, res){
 app.get("/artists", function(req, res){
     res.render("artists.mustache", {})
 })
-app.listen(process.env.port || 800)
+app.listen(process.env.PORT || 800)
